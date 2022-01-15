@@ -24,7 +24,8 @@
     <tr>
       <th scope="col">Date</th>
       <th scope="col">Product</th>
-      <th scope="col">Price</th>
+        <th scope="col">Purchase Product</th>
+      <th scope="col">Selling Price</th>
       <th scope="col">Total Quantity</th>
         <th scope="col">Total Amount</th>
         <th scope="col">Quantity Sold</th>
@@ -37,7 +38,8 @@
     <tr>
       <td>{{product.date}}</td>
       <td> <a style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
-      <td>₵{{product.price}}</td>
+        <td>₵{{product.purchase_price}}</td>
+      <td>₵{{product.selling_price}}</td>
         <td>{{product.total_quantity}}</td>
         <td>₵{{product.total_amount}}</td>
         <td>{{product.quantity_sold}}</td>

@@ -6,7 +6,8 @@ from wtforms.validators import DataRequired, Email, EqualTo
 class AddProduct(FlaskForm):
     product_name = StringField("Product Name", validators=[DataRequired()])
     product_quantity = IntegerField("Product Quantity", validators=[DataRequired()])
-    product_price = IntegerField("Product Price", validators=[DataRequired()])
+    purchase_price = IntegerField("Purchase Price", validators=[DataRequired()])
+    selling_price = IntegerField("Product Price", validators=[DataRequired()])
     submit = SubmitField("Add Product")
 
 
@@ -17,7 +18,8 @@ class Update(FlaskForm):
 
 class Restock(FlaskForm):
     quantity_brought = IntegerField("Quantity")
-    price = IntegerField("Price")
+    purchase_price = IntegerField("Purchase Price")
+    selling_price = IntegerField("Selling Price")
     submit = SubmitField('Restock')
 
 

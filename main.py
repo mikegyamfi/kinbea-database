@@ -44,7 +44,8 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
     total_quantity = db.Column(db.Integer, nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    purchase_price = db.Column(db.Integer, nullable=False)
+    selling_price = db.Column(db.Integer, nullable=False)
     date = db.Column(db.String(100), nullable=False)
     quantity_sold = db.Column(db.Integer, nullable=False)
     quantity_left = db.Column(db.Integer, nullable=False)
@@ -93,12 +94,13 @@ def add_product():
     if form.validate_on_submit():
         new_product = Product(
             name=form.product_name.data,
-            price=form.product_price.data,
+            selling_price=form.selling_price.data,
+            purchase_price=form.purchase_price.data,
             total_quantity=form.product_quantity.data,
             date=date.today().strftime("%b %d, %Y"),
             quantity_sold=0,
             amount_sold=0,
-            total_amount=form.product_price.data * form.product_quantity.data,
+            total_amount=form.selling_price.data * form.product_quantity.data,
             quantity_left=form.product_quantity.data
         )
         db.session.add(new_product)
@@ -115,10 +117,10 @@ def update(product_id):
         product = Product.query.get(product_id)
         sold_item = SoldItem(
             name=product.name,
-            price=product.price,
+            price=product.selling_price,
             quantity_sold=form.quantity_sold.data,
             date=date.today().strftime("%b %d, %Y"),
-            amount=form.quantity_sold.data * product.price,
+            amount=form.quantity_sold.data * product.selling_price,
             status="Not received"
         )
         db.session.add(sold_item)
@@ -128,7 +130,7 @@ def update(product_id):
         else:
             product.quantity_sold += form.quantity_sold.data
         product.quantity_left = product.total_quantity - product.quantity_sold
-        product.amount_sold = product.quantity_sold * product.price
+        product.amount_sold = product.quantity_sold * product.selling_price
         db.session.commit()
         return redirect(url_for('home'))
     return render_template("update_product.html", form=form)
@@ -140,7 +142,7 @@ def sold():
     sold_products = SoldItem.query.order_by(SoldItem.id.desc()).all()
     total = 0
     for product in sold_products:
-            total += product.price * product.quantity_sold
+        total += product.selling_price * product.quantity_sold
     return render_template("sold.html", products=sold_products, total=total)
 
 
@@ -160,10 +162,11 @@ def restock(product_id):
     item = Product.query.get(product_id)
     if form.validate_on_submit():
         item.total_quantity = form.quantity_brought.data
+        item.purchase_price = form.purchase_price.data
         item.quantity_left = form.quantity_brought.data
         item.quantity_sold = form.quantity_brought.data - form.quantity_brought.data
-        item.price = form.price.data
-        item.total_amount = form.quantity_brought.data * form.price.data
+        item.price = form.selling_price.data
+        item.total_amount = form.quantity_brought.data * form.selling_price.data
         item.amount_sold = 0
         db.session.commit()
         return redirect(url_for('home'))
