@@ -50,7 +50,7 @@
         <td> <a class="btn btn-outline-success" href="{{url_for('restock', product_id=product.id)}}" >Restock</a> </td>
            {% if current_user.is_authenticated %}
         {% if current_user.role == 'Admin' %}
-        <td><<a href="{{url_for('delete', product_id = product.id)}}" class="btn btn-outline-success">❌</a></td>
+        <td><a style="color:green; text-decoration:none;" href="{{url_for('delete', product_id = product.id)}}">❌</a></td>
         {% endif %}
         {% endif %}
     </tr>
