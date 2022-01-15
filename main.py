@@ -225,6 +225,14 @@ def delete(product_id):
     return redirect(url_for("home"))
 
 
+@app.route("/delete-r/<product_id>")
+def delete_r(product_id):
+    product = Received.query.get(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    return redirect(url_for("home"))
+
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = Login()

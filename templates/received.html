@@ -32,7 +32,7 @@
         <td>{{product.status}}</td>
            {% if current_user.is_authenticated %}
         {% if current_user.role == 'Admin' %}
-        <td><a style="color:green; text-decoration:none;" href="{{url_for('delete', product_id = product.id)}}">❌</a></td>
+        <td><a style="color:green; text-decoration:none;" href="{{url_for('delete_r', product_id = product.id)}}">❌</a></td>
         {% endif %}
         {% endif %}
     </tr>
