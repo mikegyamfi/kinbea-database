@@ -271,5 +271,13 @@ def delete_u(user_id):
     return redirect(url_for("users"))
 
 
+@app.route("/delete-s/<product_id>")
+def delete_r(product_id):
+    product = SoldItem.query.get(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    return redirect(url_for("sold"))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
