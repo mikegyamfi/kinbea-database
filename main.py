@@ -216,6 +216,14 @@ def register():
     return render_template("register.html", form=form)
 
 
+@app.route("/delete/<product_id>")
+def delete(product_id):
+    product = Product.query.get(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    return redirect(url_for("home"))
+
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = Login()
