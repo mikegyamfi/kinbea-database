@@ -9,12 +9,12 @@ from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, current_user, login_user, logout_user, LoginManager, login_required
 
-# import os
-# import re
-#
-# uri = os.getenv("DATABASE_URL")  # or other relevant config var
-# if uri.startswith("postgres://"):
-#     uri = uri.replace("postgres://", "postgresql://", 1)
+import os
+import re
+
+uri = os.getenv("DATABASE_URL", "sqlite:///kinbea-shop.db")  # or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -23,7 +23,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///kinbea-shop.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = uri
 db = SQLAlchemy(app)
 
 
