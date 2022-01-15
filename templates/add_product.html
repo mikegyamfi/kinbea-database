@@ -1,0 +1,13 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<body>
+<div class="jumbotron">
+  <h1 class="display-4">Add Products</h1>
+  <hr class="my-4">
+  <p>Fill the form to add products to the products database.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{url_for('home')}}" role="button">Back to All Products</a>
+  </p>
+</div>
+{{ wtf.quick_form(form,button_map={"submit": "primary"}) }}
+{% include 'footer.html' %}

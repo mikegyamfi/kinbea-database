@@ -1,0 +1,60 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<body>
+    <h2 style="text-align:center;">{{current_user.name}}({{current_user.role}})</h2>
+    <p style="text-align:center;" >{{date}}</p>
+    <p style="text-align:center;"><a href="{{url_for('logout')}}" style="text-align:center; text-decoration:none">(Log out)</a></p>
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    <h1 class="display-4">All Products in the shop </h1>
+    <p class="lead">A list of all products in the shop.</p>
+        <hr class="my-4">
+        <a class="btn btn-outline-primary btn-lg" href="{{url_for('add_product')}}" role="button">Add Products</a>
+        <a class="btn btn-outline-primary btn-lg" href="{{url_for('sold')}}" role="button">Products Sold</a>
+  </div>
+</div>
+{% with message = get_flashed_messages() %}
+  {% if message %}
+      <p style="color:green">{{ message[0] }}</p>
+  {% endif %}
+{% endwith %}
+    {% if products %}
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total Quantity</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Quantity Sold</th>
+        <th scope="col">Quantity Available</th>
+        <th scope="col">Amount Sold</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for product in products %}
+    <tr>
+      <td>{{product.date}}</td>
+      <td> <a style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
+      <td>₵{{product.price}}</td>
+        <td>{{product.total_quantity}}</td>
+        <td>₵{{product.total_amount}}</td>
+        <td>{{product.quantity_sold}}</td>
+        {% if product.quantity_left > 0 %}
+        <td>{{product.quantity_left}}</td>
+        {% else %}
+        <td style="color:red">Out of Stock</td>
+        {% endif %}
+        <td>₵{{product.amount_sold}}</td>
+        <td> <a class="btn btn-outline-success" href="{{url_for('restock', product_id=product.id)}}" >Restock</a> </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+    <h2>No stock added yet</h2>
+{% endif %}
+<h4>Total Cost: GH₵{{total}}</h4>
+{% include 'footer.html' %}
+

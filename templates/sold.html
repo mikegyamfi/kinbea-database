@@ -1,0 +1,57 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<body>
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    <h1 class="display-4">Products Sold</h1>
+    <p class="lead">A list of all products that have been sold in the shop.</p>
+        <hr class="my-4">
+        <a class="btn btn-outline-primary" href="{{url_for('home')}}" role="button">All Products</a>
+                    {% if current_user.is_authenticated %}
+        {% if current_user.role == 'Admin' %}
+<a href="{{url_for('show_received')}}" class="btn btn-outline-success">Products Cleared</a>
+        {% endif %}
+        {% endif %}
+  </div>
+</div>
+    {% if products %}
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+        <th scope="col">Quantity Sold</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for product in products %}
+    <tr>
+      <td>{{product.date}}</td>
+      <td>{{product.name}}</td>
+      <td>₵{{product.price}}</td>
+        <td>{{product.quantity_sold}}</td>
+        <td>₵{{product.amount}}</td>
+        <td>{{product.status}}</td>
+        {% if current_user.is_authenticated %}
+        {% if current_user.role == 'Admin' %}
+        <td> <a style="color:green; text-decoration:none;" href="{{url_for('update_status', product_id=product.id)}}">✔</a></td>
+        {% endif %}
+        {% endif %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+    <h2>No items sold</h2>
+{% endif %}
+<h4>Cost of Products Sold: GH₵{{total}}</h4>
+            {% if current_user.is_authenticated %}
+        {% if current_user.role == 'Admin' %}
+<a href="{{url_for('received')}}" class="btn btn-outline-success">Mark as Amount Received</a>
+        {% endif %}
+        {% endif %}
+
+{% include 'footer.html' %}

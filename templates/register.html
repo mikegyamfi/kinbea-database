@@ -1,0 +1,19 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<body style="background-color: #F5F5F5;
+    padding: 50px 60px 0px 60px;
+    font-family: 'Poppins', sans-serif;">
+<div class="jumbotron">
+  <h1 style="font-family: 'Merriweather', serif;" class="display-4">Sign up</h1>
+  <hr class="my-4">
+  <p>Sign up to be authorised</p>
+  <p class="lead">
+  </p>
+</div>
+{% with message = get_flashed_messages() %}
+  {% if message %}
+      <p style="color:red">{{ message[0] }}</p>
+  {% endif %}
+{% endwith %}
+{{ wtf.quick_form(form,button_map={"submit": "primary"}) }}
+{% include 'footer.html' %}

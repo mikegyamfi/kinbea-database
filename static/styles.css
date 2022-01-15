@@ -1,0 +1,14 @@
+body{
+    background-color: #F5F5F5;
+    padding: 50px 60px 0px 60px;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4{
+    font-family: 'Merriweather', serif;
+}
+
+a{
+    text-decoration:none;
+}
+
