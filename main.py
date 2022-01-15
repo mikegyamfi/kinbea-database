@@ -83,7 +83,7 @@ def home():
     all_products = Product.query.order_by(Product.id.desc()).all()
     total_cost = 0
     for product in all_products:
-        total_cost += product.price * product.total_quantity
+        total_cost += product.selling_price * product.total_quantity
     return render_template("index.html", products=all_products, total=total_cost, date=today)
 
 
@@ -198,7 +198,7 @@ def show_received():
     amounts_received = Received.query.order_by(Received.id.desc()).all()
     total = 0
     for product in amounts_received:
-        total += product.price * product.quantity_sold
+        total += product.selling_price * product.quantity_sold
     return render_template("received.html", total=total, products=amounts_received)
 
 
