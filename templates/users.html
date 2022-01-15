@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<body>
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    <h1 class="display-4">Stocks with amount Received</h1>
+    <p class="lead">A list of all products whose amount have been cleared</p>
+        <hr class="my-4">
+        <a class="btn btn-outline-primary btn-lg" href="{{url_for('home')}}" role="button">All Products</a>
+  </div>
+</div>
+    {% if users %}
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Role</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in users %}
+    <tr>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.role}}</td>
+           {% if current_user.is_authenticated %}
+        {% if current_user.role == 'Admin' %}
+        <td><a style="color:green; text-decoration:none;" href="{{url_for('delete_u', user_id = user.id)}}">❌</a></td>
+        {% endif %}
+        {% endif %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+    <h2>No user</h2>
+{% endif %}
+{% include 'footer.html' %}

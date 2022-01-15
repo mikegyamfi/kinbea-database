@@ -12,3 +12,8 @@ a{
     text-decoration:none;
 }
 
+ @media (max-width: 100px){
+    body{
+        padding: 50px 20px 0px 20px;
+    }
+  }

@@ -257,5 +257,19 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route("/users")
+def users():
+    users = User.query.all()
+    return render_template("users.html", users=users)
+
+
+@app.route("/delete-u/<user_id>")
+def delete_u(user_id):
+    user = User.query.get(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for("users"))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
