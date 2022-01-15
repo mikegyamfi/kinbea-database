@@ -44,7 +44,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
     total_quantity = db.Column(db.Integer, nullable=False)
-    purchase_price = db.Column(db.Numeric(precision=2, asdecimal=False), nullable=False)
+    purchase_price = db.Column(db.Numeric(precision=2, asdecimal=True), nullable=False)
     selling_price = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     date = db.Column(db.String(100), nullable=False)
     quantity_sold = db.Column(db.Integer, nullable=False)
