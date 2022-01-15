@@ -238,7 +238,7 @@ def login():
                 return redirect(url_for('login'))
         else:
             flash("Account does not exist")
-            return redirect(url_for('register'))
+            return redirect(url_for('login'))
     return render_template("login.html", form=form)
 
 
