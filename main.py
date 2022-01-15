@@ -272,7 +272,7 @@ def delete_u(user_id):
 
 
 @app.route("/delete-s/<product_id>")
-def delete_r(product_id):
+def delete_s(product_id):
     product = SoldItem.query.get(product_id)
     db.session.delete(product)
     db.session.commit()
