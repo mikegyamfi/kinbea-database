@@ -44,7 +44,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
     total_quantity = db.Column(db.Integer, nullable=False)
-    purchase_price = db.Column(db.String(10), nullable=False)
+    purchase_price = db.Column(db.Float, nullable=False)
     selling_price = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     date = db.Column(db.String(100), nullable=False)
     quantity_sold = db.Column(db.Integer, nullable=False)
@@ -95,7 +95,7 @@ def add_product():
         new_product = Product(
             name=form.product_name.data,
             selling_price=form.selling_price.data,
-            purchase_price=form.purchase_price.data,
+            purchase_price=float(form.purchase_price.data),
             total_quantity=form.product_quantity.data,
             date=date.today().strftime("%b %d, %Y"),
             quantity_sold=0,
