@@ -95,7 +95,7 @@ def add_product():
         new_product = Product(
             name=form.product_name.data,
             selling_price=form.selling_price.data,
-            purchase_price=float(form.purchase_price.data),
+            purchase_price=form.purchase_price.data,
             total_quantity=form.product_quantity.data,
             date=date.today().strftime("%b %d, %Y"),
             quantity_sold=0,
