@@ -37,7 +37,7 @@
   {% for product in products %}
     <tr>
       <td>{{product.date}}</td>
-        {% if product.quantity_left == "Out of Stock" %}
+        {% if product.quantity_left < 1 %}
         <td>{{product.name}}</td>
         {% else %}
       <td> <a style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
