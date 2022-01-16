@@ -216,7 +216,7 @@ def show_received():
 def register():
     form = Register()
     if form.validate_on_submit():
-        if form.authorization_key.data != authorization_key:
+        if form.authorization_key.data != str(authorization_key):
             flash("Invalid Key. Contact your admin to be registered")
             return redirect(url_for("register"))
         else:
