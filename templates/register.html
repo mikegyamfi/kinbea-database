@@ -15,5 +15,11 @@
       <p style="color:green">{{ message[0] }}</p>
   {% endif %}
 {% endwith %}
+ {% for error in form.password.errors %}
+          <span style="color:red;">
+
+              {{error}}
+          </span>
+          {% endfor %}
 {{ wtf.quick_form(form,button_map={"submit": "primary"}) }}
 {% include 'footer.html' %}
