@@ -170,7 +170,7 @@ def restock(product_id):
         item.amount_sold = 0
         db.session.commit()
         return redirect(url_for('home'))
-    return render_template("restock.html", form=form)
+    return render_template("restock.html", form=form, product=item)
 
 
 @app.route("/received")
