@@ -12,6 +12,8 @@ from flask_login import UserMixin, current_user, login_user, logout_user, LoginM
 import os
 import re
 
+authorization_key = os.getenv("Auth_key")
+
 uri = os.getenv("DATABASE_URL", "sqlite:///kinbea-shop.db")  # or other relevant config var
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
@@ -214,17 +216,21 @@ def show_received():
 def register():
     form = Register()
     if form.validate_on_submit():
-        new_user = User(
-            name=form.name.data.title(),
-            username=form.username.data,
-            role=form.role.data,
-            password=generate_password_hash(form.password.data, method="pbkdf2:sha256", salt_length=8)
-        )
-        db.session.add(new_user)
-        db.session.commit()
-        login_user(new_user)
-        flash(f"Welcome {new_user.name}")
-        return redirect(url_for('home'))
+        if form.authorization_key.data != authorization_key:
+            flash("Contact your admin to be registered")
+            return redirect(url_for("register"))
+        else:
+            new_user = User(
+                name=form.name.data.title(),
+                username=form.username.data,
+                role=form.role.data,
+                password=generate_password_hash(form.password.data, method="pbkdf2:sha256", salt_length=8)
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+            flash(f"Welcome {new_user.name}")
+            return redirect(url_for('home'))
     return render_template("register.html", form=form)
 
 
