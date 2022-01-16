@@ -77,7 +77,7 @@ class Received(db.Model):
 db.create_all()
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 @login_required
 def home():
     all_products = Product.query.order_by(Product.id.desc()).all()
