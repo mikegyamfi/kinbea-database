@@ -29,7 +29,7 @@ class Register(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
     role = SelectField("Role", choices=[("Admin"), ("Sales Personel")], default=("Sales Personel"),  validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired(), EqualTo("confirm_password", "Passwords don't match")])
-    confirm_password = PasswordField("Password", validators=[DataRequired()])
+    confirm_password = PasswordField("Confirm Password", validators=[DataRequired()])
     authorization_key = IntegerField("Authorization Key")
     submit = SubmitField('Register')
 
