@@ -184,6 +184,7 @@ def restock(product_id):
 
 
 @app.route("/received")
+@login_required
 def received():
     items_sold = SoldItem.query.all()
     for item in items_sold:
@@ -204,6 +205,7 @@ def received():
 
 
 @app.route("/show-received")
+@login_required
 def show_received():
     amounts_received = Received.query.order_by(Received.id.desc()).all()
     total = 0
@@ -213,6 +215,7 @@ def show_received():
 
 
 @app.route("/register", methods=['GET', 'POST'])
+@login_required
 def register():
     form = Register()
     if form.validate_on_submit():
@@ -235,6 +238,7 @@ def register():
 
 
 @app.route("/delete/<product_id>")
+@login_required
 def delete(product_id):
     product = Product.query.get(product_id)
     db.session.delete(product)
@@ -243,6 +247,7 @@ def delete(product_id):
 
 
 @app.route("/delete-r/<product_id>")
+@login_required
 def delete_r(product_id):
     product = Received.query.get(product_id)
     db.session.delete(product)
@@ -269,18 +274,21 @@ def login():
 
 
 @app.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
 
 
 @app.route("/users")
+@login_required
 def users():
     users = User.query.all()
     return render_template("users.html", users=users)
 
 
 @app.route("/delete-u/<user_id>")
+@login_required
 def delete_u(user_id):
     user = User.query.get(user_id)
     db.session.delete(user)
@@ -289,6 +297,7 @@ def delete_u(user_id):
 
 
 @app.route("/delete-s/<product_id>")
+@login_required
 def delete_s(product_id):
     product = SoldItem.query.get(product_id)
     db.session.delete(product)
