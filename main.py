@@ -44,7 +44,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
     total_quantity = db.Column(db.Integer, nullable=False)
-    purchase_price = db.Column(db.String(100), nullable=False)
+    purchase_price = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     selling_price = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     date = db.Column(db.String(100), nullable=False)
     quantity_sold = db.Column(db.Integer, nullable=False)
@@ -60,16 +60,16 @@ class SoldItem(db.Model):
     price = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     quantity_sold = db.Column(db.Integer, nullable=False)
     amount = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
-    status = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
+    status = db.Column(db.String(30), nullable=False)
 
 
 class Received(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(20), nullable=False)
     name = db.Column(db.String(80), nullable=False)
-    price = db.Column(db.Float(2), nullable=False)
-    quantity_sold = db.Column(db.Float(2), nullable=False)
-    amount = db.Column(db.Float(2), nullable=False)
+    price = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
+    quantity_sold = db.Column(db.Integer, nullable=False)
+    amount = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     status = db.Column(db.String(40), nullable=False)
 
 
