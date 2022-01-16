@@ -8,6 +8,7 @@ class AddProduct(FlaskForm):
     product_quantity = IntegerField("Product Quantity", validators=[DataRequired()])
     purchase_price = FloatField("Purchase Price", validators=[DataRequired()])
     selling_price = FloatField("Product Price", validators=[DataRequired()])
+    category = SelectField("Category", choices=["Sprays", "Oils", "ToothPastes"])
     submit = SubmitField("Add Product")
 
 

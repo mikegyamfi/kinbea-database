@@ -51,6 +51,7 @@ class Product(db.Model):
     quantity_left = db.Column(db.Integer, nullable=False)
     amount_sold = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     total_amount = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
+    category = db.Column(db.String(100), nullable=False)
 
 
 class SoldItem(db.Model):
@@ -101,7 +102,8 @@ def add_product():
             quantity_sold=0,
             amount_sold=0,
             total_amount=form.selling_price.data * form.product_quantity.data,
-            quantity_left=form.product_quantity.data
+            quantity_left=form.product_quantity.data,
+            category=form.category.data
         )
         db.session.add(new_product)
         db.session.commit()
