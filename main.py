@@ -198,7 +198,7 @@ def show_received():
     amounts_received = Received.query.order_by(Received.id.desc()).all()
     total = 0
     for product in amounts_received:
-        total += product.selling_price * product.quantity_sold
+        total += product.price * product.quantity_sold
     return render_template("received.html", total=total, products=amounts_received)
 
 
