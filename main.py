@@ -165,7 +165,7 @@ def restock(product_id):
         item.purchase_price = form.purchase_price.data
         item.quantity_left = form.quantity_brought.data
         item.quantity_sold = form.quantity_brought.data - form.quantity_brought.data
-        item.price = form.selling_price.data
+        item.selling_price = form.selling_price.data
         item.total_amount = form.quantity_brought.data * form.selling_price.data
         item.amount_sold = 0
         db.session.commit()
