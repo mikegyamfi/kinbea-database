@@ -19,6 +19,9 @@
   {% endif %}
 {% endwith %}
     {% if products %}
+    <div style="width:50%">
+        {{ wtf.quick_form(form,button_map={"submit": "primary"}) }}
+    </div>
 <table class="table table-striped table-dark">
   <thead>
     <tr>

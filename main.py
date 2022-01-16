@@ -80,12 +80,18 @@ db.create_all()
 @app.route("/")
 @login_required
 def home():
-    today = date.today().strftime("%B %d, %Y")
     all_products = Product.query.order_by(Product.id.desc()).all()
+    form = Categorize()
+    if form.validate_on_submit():
+        if form.category.data == "All":
+            all_products = Product.query.order_by(Product.id.desc()).all()
+        else:
+            all_products = Product.query.filter_by(category=form.category.data)
+    today = date.today().strftime("%B %d, %Y")
     total_cost = 0
     for product in all_products:
         total_cost += product.selling_price * product.total_quantity
-    return render_template("index.html", products=all_products, total=total_cost, date=today)
+    return render_template("index.html", products=all_products, total=total_cost, date=today, form=form)
 
 
 @app.route("/add-product", methods=['GET', 'POST'])

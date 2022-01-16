@@ -37,3 +37,7 @@ class Login(FlaskForm):
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField('Login')
 
+
+class Categorize(FlaskForm):
+    category = SelectField("Category", choices=["All", "Sprays", "Oils", "ToothPastes"])
+    submit = SubmitField("Search")
