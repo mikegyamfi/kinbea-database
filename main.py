@@ -142,7 +142,7 @@ def sold():
     sold_products = SoldItem.query.order_by(SoldItem.id.desc()).all()
     total = 0
     for product in sold_products:
-        total += product.selling_price * product.quantity_sold
+        total += product.price * product.quantity_sold
     return render_template("sold.html", products=sold_products, total=total)
 
 
