@@ -8,7 +8,7 @@ class AddProduct(FlaskForm):
     product_quantity = IntegerField("Product Quantity", validators=[DataRequired()])
     purchase_price = FloatField("Purchase Price", validators=[DataRequired()])
     selling_price = FloatField("Product Price", validators=[DataRequired()])
-    category = SelectField("Category", choices=["All", "Perfumes", "Oils", "ToothPastes", "Tubes", "Soaps", "Creams and Lotions", "Wigs", "Toilet Papers", "Underwear", "Relaxers", "Makeups"])
+    category = SelectField("Category", choices=["All", "Perfumes", "Oils", "ToothPastes", "Tubes", "Soaps", "Creams and Lotions", "Wigs", "Toilet Papers", "Underwear", "Relaxers", "Makeups", "Roll-on"])
     submit = SubmitField("Add Product")
 
 
@@ -41,5 +41,5 @@ class Login(FlaskForm):
 
 
 class Categorize(FlaskForm):
-    category = SelectField("Category", choices=["All", "Perfumes", "Oils", "ToothPastes", "Tubes", "Soaps", "Creams and Lotions", "Wigs", "Toilet Papers", "Underwear", "Relaxers", "Makeups"])
+    category = SelectField("Category", choices=["All", "Perfumes", "Oils", "ToothPastes", "Tubes", "Soaps", "Creams and Lotions", "Wigs", "Toilet Papers", "Underwear", "Relaxers", "Makeups", "Roll-on"])
     submit = SubmitField("Search")
