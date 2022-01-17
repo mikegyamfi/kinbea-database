@@ -2,7 +2,9 @@ from flask import Flask, render_template, url_for, redirect, request, flash
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
-
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, IntegerField, SelectField, PasswordField, FloatField
+from wtforms.validators import DataRequired, Email, EqualTo
 from forms import *
 from datetime import date
 from sqlalchemy.orm import relationship
@@ -80,11 +82,24 @@ class Received(db.Model):
 db.create_all()
 
 
+groups = []
+groups_in_db = Product.query.all()
+for prod in groups_in_db:
+    groups.append(prod)
+clean_groups = list(set(groups))
+
+
+class GroupProducts(FlaskForm):
+    group = SelectField()
+    submit = SubmitField("Search")
+
+
 @app.route("/", methods=['GET', 'POST'])
 @login_required
 def home():
     all_products = Product.query.order_by(Product.name).all()
     form = Categorize()
+    group_form = GroupProducts()
     if form.validate_on_submit():
         if form.category.data == "All":
             all_products = Product.query.order_by(Product.name).all()
@@ -94,7 +109,7 @@ def home():
     total_cost = 0
     for product in all_products:
         total_cost += product.selling_price * product.total_quantity
-    return render_template("index.html", products=all_products, total=total_cost, date=today, form=form)
+    return render_template("index.html", products=all_products, total=total_cost, date=today, form=form, group_form=group_form)
 
 
 @app.route("/add-product", methods=['GET', 'POST'])
