@@ -83,7 +83,7 @@ db.create_all()
 @app.route("/", methods=['GET', 'POST'])
 @login_required
 def home():
-    all_products = Product.query.order_by(Product.id.desc()).all()
+    all_products = Product.query.order_by(Product.name).all()
     form = Categorize()
     if form.validate_on_submit():
         if form.category.data == "All":
