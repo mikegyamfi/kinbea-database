@@ -87,9 +87,9 @@ def home():
     form = Categorize()
     if form.validate_on_submit():
         if form.category.data == "All":
-            all_products = Product.query.order_by(Product.id.desc()).all()
+            all_products = Product.query.order_by(Product.name).all()
         else:
-            all_products = Product.query.filter_by(category=form.category.data)
+            all_products = Product.query.filter_by(category=form.category.data).order_by(Product.name)
     today = date.today().strftime("%B %d, %Y")
     total_cost = 0
     for product in all_products:
