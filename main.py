@@ -215,7 +215,6 @@ def show_received():
 
 
 @app.route("/register", methods=['GET', 'POST'])
-@login_required
 def register():
     form = Register()
     if form.validate_on_submit():
