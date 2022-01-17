@@ -54,6 +54,7 @@ class Product(db.Model):
     amount_sold = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     total_amount = db.Column(db.Float(precision=2, decimal_return_scale=2), nullable=False)
     category = db.Column(db.String(100), nullable=False)
+    group_name = db.Column(db.String(100), nullable=False)
 
 
 class SoldItem(db.Model):
@@ -109,6 +110,7 @@ def add_product():
             date=date.today().strftime("%b %d, %Y"),
             quantity_sold=0,
             amount_sold=0,
+            group_name=form.group_name.data,
             total_amount=form.selling_price.data * form.product_quantity.data,
             quantity_left=form.product_quantity.data,
             category=form.category.data
