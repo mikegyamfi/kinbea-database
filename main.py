@@ -85,7 +85,10 @@ db.create_all()
 groups = []
 groups_in_db = Product.query.all()
 for prod in groups_in_db:
-    groups.append(prod.group_name)
+    if prod.group_name in groups:
+        continue
+    else:
+        groups.append(prod.group_name)
 clean_groups = list(dict.fromkeys(groups))
 
 
