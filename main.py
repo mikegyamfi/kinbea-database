@@ -82,7 +82,7 @@ class Received(db.Model):
 db.create_all()
 
 
-groups = []
+groups = ["All"]
 groups_in_db = Product.query.all()
 for prod in groups_in_db:
     if prod.group_name in groups:
@@ -103,6 +103,13 @@ def home():
     all_products = Product.query.order_by(Product.name).all()
     form = Categorize()
     group_form = GroupProducts()
+    if group_form.validate_on_submit():
+        if group_form.validate_on_submit():
+            if group_form.group.data == "All":
+                all_products = Product.query.order_by(Product.name).all()
+            else:
+                all_products = Product.query.filter_by(group_name=group_form.group.data).order_by(Product.name)
+
     if form.validate_on_submit():
         if form.category.data == "All":
             all_products = Product.query.order_by(Product.name).all()
