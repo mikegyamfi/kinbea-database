@@ -25,7 +25,7 @@
             {{ form.category.label }}: {{ form.category() }}
             {{form.submit()}}
         </form>
-            <form method="post" action="{{url_for('home')}}">
+            <form style="margin-left:auto;" method="post" action="{{url_for('home')}}">
             {{group_form.csrf_token}}
             {{ group_form.group.label }}: {{ group_form.group() }}
             {{form.submit()}}
