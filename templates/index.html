@@ -26,8 +26,8 @@
             {{form.submit()}}
         </form>
             <form method="post" action="{{url_for('home')}}">
-            {{form.csrf_token}}
-            {{ form.group.label }}: {{ form.group() }}
+            {{group_form.csrf_token}}
+            {{ group_form.group.label }}: {{ group_form.group() }}
             {{form.submit()}}
         </form>
     </div>

@@ -90,7 +90,7 @@ clean_groups = list(set(groups))
 
 
 class GroupProducts(FlaskForm):
-    group = SelectField()
+    group = SelectField("Groups", choices=groups)
     submit = SubmitField("Search")
 
 
