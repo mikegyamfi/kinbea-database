@@ -89,7 +89,7 @@ for prod in groups_in_db:
         continue
     else:
         groups.append(prod.group_name)
-clean_groups = list(dict.fromkeys(groups))
+clean_groups = groups
 
 
 class GroupProducts(FlaskForm):
