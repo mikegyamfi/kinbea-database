@@ -26,8 +26,8 @@
             {{form.submit()}}
         </form>
         </div>
-        <div style="width:50%; margin-bottom:30px; margin-left:auto; text-align:left">
-            <form style="margin-left:auto; text-align:left" method="post" action="{{url_for('home')}}">
+        <div style="width:30%; margin-bottom:30px; margin-left:auto; text-align:left">
+            <form method="post" action="{{url_for('home')}}">
             {{group_form.csrf_token}}
             {{ group_form.group.label }}: {{ group_form.group() }}
             {{form.submit()}}
