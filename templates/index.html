@@ -26,13 +26,11 @@
             {{form.submit()}}
         </form>
         </div>
-        <div style="width:30%; margin-bottom:30px; margin-left:auto; text-align:left">
-            <form method="post" action="{{url_for('home')}}">
+            <form style="margin-bottom:30px; margin-left:auto; text-align:left" method="post" action="{{url_for('home')}}">
             {{group_form.csrf_token}}
             {{ group_form.group.label }}: {{ group_form.group() }}
             {{form.submit()}}
         </form>
-    </div>
 <table class="table table-striped table-dark">
   <thead>
     <tr>
