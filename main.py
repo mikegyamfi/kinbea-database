@@ -89,7 +89,7 @@ for prod in groups_in_db:
         continue
     else:
         groups.append(prod.group_name)
-clean_groups = groups
+clean_groups = sorted(groups, key=str.lower)
 
 
 class GroupProducts(FlaskForm):
@@ -347,6 +347,18 @@ def edit_price(product_id):
         db.session.commit()
         return redirect(url_for('home'))
     return render_template("edit_price.html", form=form, product=product)
+
+
+@app.route("/no-price")
+def no_price():
+    no_price_list = []
+    products = Product.query.order_by(Product.name).all()
+    for product in products:
+        if product.price == 0.1:
+            no_price_list.append(product)
+        else:
+            continue
+    return render_template("noprice.html", list=no_price_list)
 
 
 if __name__ == "__main__":
