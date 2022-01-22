@@ -344,6 +344,7 @@ def edit_price(product_id):
     if form.validate_on_submit():
         product.purchase_price = form.purchase_price.data
         product.selling_price = form.selling_price.data
+        product.total_amount = form.selling_price.data * product.total_quantity
         db.session.commit()
         return redirect(url_for('home'))
     return render_template("edit_price.html", form=form, product=product)
