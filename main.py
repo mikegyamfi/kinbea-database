@@ -334,7 +334,7 @@ def delete_s(product_id):
     return redirect(url_for("sold"))
 
 
-@app.route("/edit-price/<product_id>")
+@app.route("/edit-price/<product_id>", methods=['GET', 'POST'])
 def edit_price(product_id):
     product = Product.query.get(product_id)
     form = EditPrice(
