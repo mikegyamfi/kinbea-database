@@ -355,7 +355,7 @@ def no_price():
     no_price_list = []
     products = Product.query.order_by(Product.name).all()
     for product in products:
-        if product.price == 0.1:
+        if product.selling_price == 0.1:
             no_price_list.append(product)
         else:
             continue
