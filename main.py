@@ -195,8 +195,11 @@ def update_status(product_id):
 @app.route("/restock/<product_id>", methods=['GET', 'POST'])
 @login_required
 def restock(product_id):
-    form = Restock()
     item = Product.query.get(product_id)
+    form = Restock(
+        purchase_price=item.purchase_price,
+        selling_price=item.selling_price
+    )
     if form.validate_on_submit():
         item.total_quantity = form.quantity_brought.data
         item.purchase_price = form.purchase_price.data
@@ -329,6 +332,21 @@ def delete_s(product_id):
     db.session.delete(product)
     db.session.commit()
     return redirect(url_for("sold"))
+
+
+@app.route("/edit-price/<product_id>")
+def edit_price(product_id):
+    product = Product.query.get(product_id)
+    form = EditPrice(
+        purchase_price=product.purchase_price,
+        selling_price=product.selling_price
+    )
+    if form.validate_on_submit():
+        product.purchase_price = form.purchase_price.data
+        product.selling_price = form.selling_price.data
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template("edit_price.html", form=form, product=product)
 
 
 if __name__ == "__main__":

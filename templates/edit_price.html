@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<body style="background-color: #F5F5F5;
+    padding: 50px 60px 0px 60px;
+    font-family: 'Poppins', sans-serif;">
+<div class="jumbotron">
+  <h1 style="font-family: 'Merriweather', serif;" class="display-4">Edit Price({{product.name}})</h1>
+  <hr class="my-4">
+  <p>Edit product price</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{url_for('home')}}" role="button">Back to All Products</a>
+  </p>
+</div>
+{{ wtf.quick_form(form,button_map={"submit": "primary"}) }}
+{% include 'footer.html' %}

@@ -7,7 +7,7 @@ class AddProduct(FlaskForm):
     product_name = StringField("Product Name", validators=[DataRequired()])
     product_quantity = IntegerField("Product Quantity", validators=[DataRequired()])
     purchase_price = FloatField("Purchase Price", validators=[DataRequired()])
-    selling_price = FloatField("Product Price", validators=[DataRequired()])
+    selling_price = FloatField("Selling Price", validators=[DataRequired()])
     group_name = StringField("Group Name", validators=[DataRequired()])
     category = SelectField("Category", choices=["Perfumes", "Oils", "ToothPastes", "Tubes", "Soaps", "Creams", "Lotions", "Wigs", "Toilet Papers", "Underwear", "Relaxers", "Makeups", "Roll-on", "Glycerine", "Styling Gel", "Shower Gel", "Cleanser", "Hair Dye", "Hand Sanitizer", "Shampoo", "Conditioner", "Powder", "Setting Lotion", "Spiritz", "Spray", "Deodorant Spray","Detergent", "ToothBrush", "Pampers", "Others"])
     submit = SubmitField("Add Product")
@@ -44,3 +44,8 @@ class Login(FlaskForm):
 class Categorize(FlaskForm):
     category = SelectField("Category", choices=["All", "Perfumes", "Oils", "ToothPastes", "Tubes", "Soaps", "Creams", "Lotions", "Wigs", "Toilet Papers", "Underwear", "Relaxers", "Makeups", "Roll-on", "Glycerine", "Styling Gel", "Shower Gel", "Cleanser", "Hair Dye", "Hand Sanitizer", "Shampoo", "Conditioner", "Powder", "Setting Lotion", "Spiritz", "Spray", "Deodorant Spray", "Detergent", "ToothBrush", "Pampers", "Others"])
     submit = SubmitField("Search")
+
+
+class EditPrice(FlaskForm):
+    purchase_price = FloatField("Purchase Price")
+    selling_price = FloatField("Selling Price")
