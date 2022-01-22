@@ -49,3 +49,4 @@ class Categorize(FlaskForm):
 class EditPrice(FlaskForm):
     purchase_price = FloatField("Purchase Price")
     selling_price = FloatField("Selling Price")
+    submit = SubmitField("Edit Price")
