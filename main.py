@@ -197,6 +197,7 @@ def update_status(product_id):
 def restock(product_id):
     item = Product.query.get(product_id)
     form = Restock(
+        quantity_brought=item.quantity_left,
         purchase_price=item.purchase_price,
         selling_price=item.selling_price
     )
