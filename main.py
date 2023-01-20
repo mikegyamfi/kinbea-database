@@ -279,7 +279,7 @@ def delete():
         # product = Product.query.get(product_id)
         # db.session.delete(product)
         # db.session.commit()
-        # return redirect(url_for("home"))
+        return redirect(url_for("home"))
 
 
 @app.route("/delete-r/<product_id>")
