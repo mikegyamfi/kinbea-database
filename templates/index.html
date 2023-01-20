@@ -19,13 +19,13 @@
   {% endif %}
 {% endwith %}
     {% if products %}
-    <div style="width:50%; margin-bottom:30px;">
-        <form method="post" action="{{url_for('home')}}">
-            {{form.csrf_token}}
-            {{ form.category.label }}: {{ form.category() }}
-            {{form.submit()}}
-        </form>
-<!--        </div>-->
+<!--    <div style="width:50%; margin-bottom:30px;">-->
+<!--        <form method="post" action="{{url_for('home')}}">-->
+<!--            {{form.csrf_token}}-->
+<!--            {{ form.category.label }}: {{ form.category() }}-->
+<!--            {{form.submit()}}-->
+<!--        </form>-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
 <!--            <form style="width:30%; margin-bottom:30px; margin-left:auto; text-align:left" method="post" action="{{url_for('home')}}">-->
 <!--            {{group_form.csrf_token}}-->
 <!--            {{ group_form.group.label }}: {{ group_form.group() }}-->
@@ -85,4 +85,3 @@
 <h4>Total Cost: GH₵{{total}}</h4>
 {% include 'footer.html' %}
 
-    </div>
