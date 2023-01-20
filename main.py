@@ -276,10 +276,10 @@ def delete():
         product_id = request.form.get("product_id")
         print(product_id)
         print("came")
-        product = Product.query.get(product_id)
-        db.session.delete(product)
-        db.session.commit()
-        return redirect(url_for("home"))
+        # product = Product.query.get(product_id)
+        # db.session.delete(product)
+        # db.session.commit()
+        # return redirect(url_for("home"))
 
 
 @app.route("/delete-r/<product_id>")
