@@ -43,6 +43,9 @@
         <th scope="col">Quantity Sold</th>
         <th scope="col">Quantity Available</th>
         <th scope="col">Amount Sold</th>
+        <th scope="col">Restock</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit Price</th>
     </tr>
   </thead>
   <tbody>
@@ -65,7 +68,7 @@
         <td style="color:red">Out of Stock</td>
         {% endif %}
         <td>₵{{product.amount_sold}}</td>
-        <td> <a class="btn btn-outline-success" href="{{url_for('restock', product_id=product.id)}}" >Restock</a> </td>
+        <td> <a class="btn btn-sm btn-outline-success" href="{{url_for('restock', product_id=product.id)}}" >Restock</a> </td>
            {% if current_user.is_authenticated %}
         {% if current_user.role == 'Admin' %}
         <td><a style="color:green; text-decoration:none;" href="{{url_for('delete', product_id = product.id)}}">❌</a></td>
@@ -82,3 +85,4 @@
 <h4>Total Cost: GH₵{{total}}</h4>
 {% include 'footer.html' %}
 
+    </div>
