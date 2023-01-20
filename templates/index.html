@@ -71,7 +71,8 @@
         <td> <a class="btn btn-sm btn-outline-success" href="{{url_for('restock', product_id=product.id)}}" >Restock</a> </td>
            {% if current_user.is_authenticated %}
         {% if current_user.role == 'Admin' %}
-        <td><a style="color:green; text-decoration:none;" href="{{url_for('delete', product_id = product.id)}}">❌</a></td>
+        <input type="hidden" class="prod_id" value="{{product.id}}">
+        <td><a class="delete-product" style="color:green; text-decoration:none;" href="#">❌</a></td>
         <td><a class="btn btn-sm btn-outline-primary" style="color:white; text-decoration:none;" href="{{url_for('edit_price', product_id = product.id)}}">Edit Price</a></td>
         {% endif %}
         {% endif %}
@@ -85,3 +86,4 @@
 <h4>Total Cost: GH₵{{total}}</h4>
 {% include 'footer.html' %}
 
+<!--{{url_for('delete', product_id = product.id)}}-->

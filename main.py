@@ -1,3 +1,5 @@
+from crypt import methods
+
 from flask import Flask, render_template, url_for, redirect, request, flash
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -267,13 +269,15 @@ def register():
     return render_template("register.html", form=form)
 
 
-@app.route("/delete/<product_id>")
+@app.route("delete", methods=["GET", "POST"])
 @login_required
-def delete(product_id):
-    product = Product.query.get(product_id)
-    db.session.delete(product)
-    db.session.commit()
-    return redirect(url_for("home"))
+def delete():
+    if request.method == "POST":
+        product_id = request.form.get("product_id")
+        product = Product.query.get(product_id)
+        db.session.delete(product)
+        db.session.commit()
+        return redirect(url_for("home"))
 
 
 @app.route("/delete-r/<product_id>")
