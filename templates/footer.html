@@ -27,7 +27,8 @@
         csrfmiddlewaretoken: token,
       },
       success: function (response) {
-        alertify.success(response.status);
+          alert("Successfully deleted");
+          console.log("yay");
         $(".table").load(location.href + " .table");
       },
     });
