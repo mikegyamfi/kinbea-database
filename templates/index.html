@@ -25,13 +25,13 @@
             {{ form.category.label }}: {{ form.category() }}
             {{form.submit()}}
         </form>
-        </div>
-            <form style="width:30%; margin-bottom:30px; margin-left:auto; text-align:left" method="post" action="{{url_for('home')}}">
-            {{group_form.csrf_token}}
-            {{ group_form.group.label }}: {{ group_form.group() }}
-            {{form.submit()}}
-        </form>
-<table id="table_id">
+<!--        </div>-->
+<!--            <form style="width:30%; margin-bottom:30px; margin-left:auto; text-align:left" method="post" action="{{url_for('home')}}">-->
+<!--            {{group_form.csrf_token}}-->
+<!--            {{ group_form.group.label }}: {{ group_form.group() }}-->
+<!--            {{form.submit()}}-->
+<!--        </form>-->
+<table class="table table-dark table-striped" id="table_id">
   <thead>
     <tr>
       <th scope="col">Date</th>
