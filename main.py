@@ -274,6 +274,8 @@ def register():
 def delete():
     if request.method == "POST":
         product_id = request.form.get("product_id")
+        print(product_id)
+        print("came")
         product = Product.query.get(product_id)
         db.session.delete(product)
         db.session.commit()
