@@ -269,7 +269,7 @@ def register():
     return render_template("register.html", form=form)
 
 
-@app.route("delete", methods=["GET", "POST"])
+@app.route("/delete", methods=["GET", "POST"])
 @login_required
 def delete():
     if request.method == "POST":
