@@ -19,6 +19,8 @@
     let product_id = $(".prod_id").val();
     let token = $("input[name=csrfmiddlewaretoken]").val();
 
+    console.log(product_id)
+
     $.ajax({
       method: "POST",
       url: "/delete",

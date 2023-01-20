@@ -50,7 +50,6 @@
   </thead>
   <tbody>
   {% for product in products %}
-  <input type="hidden" class="prod_id" value="{{product.id}}">
     <tr>
       <td>{{product.date}}</td>
         {% if product.quantity_left < 1 %}
@@ -69,6 +68,7 @@
         <td style="color:red">Out of Stock</td>
         {% endif %}
         <td>₵{{product.amount_sold}}</td>
+          <input type="hidden" class="prod_id" value="{{product.id}}">
         <td> <a class="btn btn-sm btn-outline-success" href="{{url_for('restock', product_id=product.id)}}" >Restock</a> </td>
            {% if current_user.is_authenticated %}
         {% if current_user.role == 'Admin' %}
