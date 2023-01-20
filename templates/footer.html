@@ -16,7 +16,7 @@
       $(document).on("click", ".delete-product", function (e) {
     e.preventDefault();
 
-    let product_id = $(".delete-product").attr('id');
+    let product_id = $("#delete-product").attr("class");
     let token = $("input[name=csrfmiddlewaretoken]").val();
 
     console.log(product_id)
