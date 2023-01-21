@@ -120,7 +120,7 @@ def home():
     for product in all_products:
         total_cost += product.selling_price * product.total_quantity
     formatted_total = numbers = "{:,}".format(total_cost)
-    return render_template("index.html", products=all_products, total=round(formatted_total, 2), date=today, form=form, group_form=group_form)
+    return render_template("index.html", products=all_products, total=formatted_total, date=today, form=form, group_form=group_form)
 
 
 @app.route("/add-product", methods=['GET', 'POST'])
