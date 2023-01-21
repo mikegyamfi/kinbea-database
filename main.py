@@ -119,7 +119,7 @@ def home():
     total_cost = 0
     for product in all_products:
         total_cost += product.selling_price * product.total_quantity
-    formatted_total = numbers = "{:,}".format(total_cost)
+    formatted_total = numbers = "{:,}".format(round(total_cost, 2))
     return render_template("index.html", products=all_products, total=formatted_total, date=today, form=form, group_form=group_form)
 
 
