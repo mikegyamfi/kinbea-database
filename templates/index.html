@@ -31,6 +31,7 @@
 <!--            {{ group_form.group.label }}: {{ group_form.group() }}-->
 <!--            {{form.submit()}}-->
 <!--        </form>-->
+<div class="table-responsive">
 <table class="table table-dark table-striped" id="table_id">
   <thead>
     <tr>
@@ -79,6 +80,7 @@
   {% endfor %}
   </tbody>
 </table>
+</div>
 {% else %}
     <h2>No stock added yet</h2>
 {% endif %}
