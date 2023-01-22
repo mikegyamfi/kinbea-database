@@ -56,10 +56,10 @@
         {% if product.quantity_left < 1 %}
         <td>{{product.name}}</td>
         {% else %}
-      <td> <a style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
+      <td class="product-name"> <a style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
         {% endif %}
         <td>₵{{product.purchase_price}}</td>
-      <td>₵{{product.selling_price}}</td>
+      <td class="purchase-price">₵{{product.selling_price}}</td>
         <td>{{product.total_quantity}}</td>
         <td>₵{{product.total_amount}}</td>
         <td>{{product.quantity_sold}}</td>
