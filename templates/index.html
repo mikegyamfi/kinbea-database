@@ -54,7 +54,7 @@
     <tr>
       <td>{{product.date}}</td>
         {% if product.quantity_left < 1 %}
-        <td>{{product.name}}</td>
+        <td class="product-name">{{product.name}}</td>
         {% else %}
       <td> <a style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
         {% endif %}
