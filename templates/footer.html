@@ -20,13 +20,13 @@
     .order( 'asc' )
     .draw()
 
-        let name = $(".product-id").serialize();
+        let name = document.querySelectorAll(".product-name");
         let purchase_prices = document.querySelectorAll(".purchase-price")
 
         purchase_prices.forEach((purchase_price, i) => {
             purchase_price.addEventListener('click', ()=>{
-            console.log(name[i]);
-            alert(name[i])
+            console.log(name[i].text());
+            alert(name[i].text())
         })
         })
         console.log(name[0])
