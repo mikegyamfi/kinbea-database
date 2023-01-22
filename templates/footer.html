@@ -21,7 +21,8 @@
     .draw()
 
     $(".purchase-price").click(function (e){
-        let name = $(".product-name").text();
+        e.preventDefault()
+        let name = $(".product-id").val();
         console.log(name)
         alert(name);
     })
