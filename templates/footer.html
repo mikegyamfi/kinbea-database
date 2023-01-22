@@ -20,12 +20,18 @@
     .order( 'asc' )
     .draw()
 
-    $(".purchase-price").click(function (e){
-        e.preventDefault()
         let name = $(".product-id").val();
+        let purchase_prices = document.querySelectorAll(".purchase-price")
+
+        purchase_prices.forEach((purchase_price, i) => {
+            purchase_price.addEventListener('click', ()=>{
+            console.log(name[i]);
+            alert(name)
+        })
+        })
         console.log(name)
         alert(name);
-    })
+
     } );
 </script>
 </body>
