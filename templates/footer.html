@@ -20,7 +20,7 @@
     .order( 'asc' )
     .draw()
 
-        let name = document.querySelectorAll(".product-name");
+        let name = $(".product-id").serialize();
         let purchase_prices = document.querySelectorAll(".purchase-price")
 
         purchase_prices.forEach((purchase_price, i) => {
