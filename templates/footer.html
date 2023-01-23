@@ -41,7 +41,7 @@
                     csrfmiddlewaretoken: token,
                 },
                 success: function (response) {
-                    alerify.alert(response);
+                    alerify.alert("Deleting item");
                     $(".table-responsive").load(location.href + " .table-responsive");
                 },
             });
