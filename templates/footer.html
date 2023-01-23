@@ -20,12 +20,12 @@
     .order( 'asc' )
     .draw()
 
-        let product_id = document.querySelectorAll(".product-id");
+        let product_id = document.querySelectorAll("#product-id");
         let purchase_prices = document.querySelectorAll(".purchase-price")
 
         purchase_prices.forEach((purchase_price, i) => {
             purchase_price.addEventListener('click', ()=>{
-            console.log(product_id[i].val());
+            console.log(product_id[i].attr("class"));
             // alert(name[i].innerHTML)
         })
         })
