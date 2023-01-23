@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, flash, jsonify
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
@@ -274,10 +274,10 @@ def delete():
     if request.method == "POST":
         product_id = request.form.get("product_id")
         print(product_id)
-        # product = Product.query.get(product_id)
-        # db.session.delete(product)
-        # db.session.commit()
-        return redirect(url_for("home"))
+        product = Product.query.get(product_id)
+        db.session.delete(product)
+        db.session.commit()
+        return jsonify("Item deleted")
 
 
 @app.route("/delete-r/<product_id>")

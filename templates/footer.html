@@ -38,7 +38,7 @@
                     csrfmiddlewaretoken: token,
                 },
                 success: function (response) {
-                    // alertify.success(response.status);
+                    alert(response.status);
                     $(".table-responsive").load(location.href + " .table-responsive");
                 },
             });
