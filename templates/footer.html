@@ -26,8 +26,22 @@
         purchase_prices.forEach((purchase_price, i) => {
             purchase_price.addEventListener('click', ()=>{
             let product_id_single = product_id[i].value;
+            let token = $("input[name=csrfmiddlewaretoken]").val();
 
             console.log(product_id_single);
+
+            $.ajax({
+                method: "POST",
+                url: "/delete/",
+                data: {
+                    product_id: product_id,
+                    csrfmiddlewaretoken: token,
+                },
+                success: function (response) {
+                    // alertify.success(response.status);
+                    $(".table-responsive").load(location.href + " .table-responsive");
+                },
+            });
         })
         })
 
