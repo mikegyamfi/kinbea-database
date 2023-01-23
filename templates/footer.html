@@ -34,7 +34,8 @@
                 method: "POST",
                 url: "/delete",
                 data: {
-                    product_id: product_id,
+                    product_id: product_id_single,
+                    csrfmiddlewaretoken: token,
                 },
                 success: function (response) {
                     // alertify.success(response.status);
