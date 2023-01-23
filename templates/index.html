@@ -58,7 +58,7 @@
         {% else %}
       <td> <a class="product-name" style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
         {% endif %}
-        <input class="{{product.id}}" id="product-id" type="hidden" value="{{product.id}}">
+        <div class="{{product.id}}" style="visibility: hidden" id="product-id">{{product.id}}</div>
         <td>₵{{product.purchase_price}}</td>
       <td class="purchase-price">₵{{product.selling_price}}</td>
         <td>{{product.total_quantity}}</td>
