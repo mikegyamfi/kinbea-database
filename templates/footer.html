@@ -42,7 +42,9 @@
                 success: function (response) {
 
                     alert("Deleting item");
+                    alertify.alert("Deleting")
                     $(".table-responsive").load(location.href + " .table-responsive");
+                    alertify.notify("Item deleted")
                 },
             });
         })
