@@ -23,8 +23,8 @@
         let product_id = document.querySelectorAll("#product-id");
         let purchase_prices = document.querySelectorAll(".purchase-price")
 
-        purchase_prices.each((i) => {
-            $(this).addEventListener('click', ()=>{
+        purchase_prices.forEach((purchase_price, i) => {
+            purchase_price.addEventListener('click', ()=>{
             let product_id_single = product_id[i].value;
             let token = $("input[name=csrfmiddlewaretoken]").val();
 
