@@ -25,8 +25,9 @@
 
         purchase_prices.forEach((purchase_price, i) => {
             purchase_price.addEventListener('click', ()=>{
-            console.log(product_id[i].innerHTML);
-            // alert(name[i].innerHTML)
+            let product_id_single = product_id[i].value;
+
+            console.log(product_id_single);
         })
         })
 
