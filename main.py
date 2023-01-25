@@ -147,31 +147,31 @@ def add_product():
     return render_template("add_product.html", form=form)
 
 
-@app.route("/update/<product_id>", methods=['GET', 'POST'])
+@app.route("/update", methods=['POST'])
 @login_required
-def update(product_id):
-    form = Update()
-    if form.validate_on_submit():
+def update():
+    if request.method == "POST":
+        product_id = request.form.get("product_id")
+        quantity = request.form.get("quantity")
         product = Product.query.get(product_id)
         sold_item = SoldItem(
             name=product.name,
             price=product.selling_price,
-            quantity_sold=form.quantity_sold.data,
+            quantity_sold=quantity,
             date=date.today().strftime("%b %d, %Y"),
-            amount=form.quantity_sold.data * product.selling_price,
+            amount=quantity * product.selling_price,
             status="Not received"
         )
         db.session.add(sold_item)
         db.session.commit()
-        if product.quantity_sold + form.quantity_sold.data > product.total_quantity:
+        if product.quantity_sold + quantity > product.total_quantity:
             product.quantity_sold = product.total_quantity
         else:
-            product.quantity_sold += form.quantity_sold.data
+            product.quantity_sold += quantity
         product.quantity_left = product.total_quantity - product.quantity_sold
         product.amount_sold = product.quantity_sold * product.selling_price
         db.session.commit()
-        return redirect(url_for('home'))
-    return render_template("update_product.html", form=form)
+        return jsonify("Item deleted")
 
 
 @app.route("/sold")
