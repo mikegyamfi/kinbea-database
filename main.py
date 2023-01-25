@@ -279,7 +279,6 @@ def delete():
         db.session.delete(product)
         db.session.commit()
         return jsonify("Item deleted")
-    return redirect('home')
 
 
 @app.route("/delete-r/<product_id>")
