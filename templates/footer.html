@@ -81,6 +81,19 @@
         })
         })
 
+
+        $(".restock-confirm").click(function(e){
+            e.preventDefault()
+
+            let quantity = $("#quantity").val()
+            let purchase_price = $("#purchase-price").val()
+            let selling_price = $("#selling-price").val()
+
+            console.log(quantity)
+            console.log(purchase_price)
+            console.log(selling_price)
+        })
+
     } );
 </script>
 </body>
