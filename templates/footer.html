@@ -67,8 +67,8 @@
                             quantity: value,
                         },
                         success: function (response) {
-                            alertify.notify(response)
                             $(".table-responsive").load(location.href + " .table-responsive");
+                            alertify.notify(response);
                         },
                     });
                 }
