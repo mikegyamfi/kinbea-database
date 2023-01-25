@@ -171,7 +171,7 @@ def update():
         product.quantity_left = product.total_quantity - product.quantity_sold
         product.amount_sold = product.quantity_sold * product.selling_price
         db.session.commit()
-        return jsonify("Item deleted")
+        return jsonify("Item updated")
 
 
 @app.route("/sold")
