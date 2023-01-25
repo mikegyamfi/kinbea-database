@@ -66,6 +66,10 @@
                         success: function (response) {
                             $(".refresh").load(location.href + " .refresh");
                             alertify.notify(response);
+                            table
+                            .column( '1:visible' )
+                            .order( 'asc' )
+                            .draw(true)
                         },
                     });
                 }
