@@ -42,7 +42,7 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    $(".table-data").load(location.href + " .table-data");
+                    $(".refresh").load(location.href + " .refresh");
                 },
             });
         })
@@ -66,7 +66,7 @@
                             quantity: value,
                         },
                         success: function (response) {
-                            $(".table-data").load(location.href + " .table-data");
+                            $(".refresh").load(location.href + " .refresh");
                             alertify.notify(response);
                         },
                     });
