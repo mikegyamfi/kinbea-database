@@ -40,7 +40,7 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    $(".refresh").load(location.href + " .refresh");
+                    $(".table-body").load(location.href + " .table-body");
                     table.destroy();
 
                     table = $('#table_id').DataTable();
