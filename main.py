@@ -159,15 +159,15 @@ def update():
             price=product.selling_price,
             quantity_sold=quantity,
             date=date.today().strftime("%b %d, %Y"),
-            amount=quantity * product.selling_price,
+            amount=int(quantity) * product.selling_price,
             status="Not received"
         )
         db.session.add(sold_item)
         db.session.commit()
-        if product.quantity_sold + quantity > product.total_quantity:
+        if product.quantity_sold + int(quantity) > product.total_quantity:
             product.quantity_sold = product.total_quantity
         else:
-            product.quantity_sold += quantity
+            product.quantity_sold += int(quantity)
         product.quantity_left = product.total_quantity - product.quantity_sold
         product.amount_sold = product.quantity_sold * product.selling_price
         db.session.commit()
