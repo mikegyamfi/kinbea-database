@@ -48,36 +48,7 @@
         })
         })
 
-        product_names.forEach((product_name, i) => {
-            product_name.addEventListener('click', ()=>{
-            let product_id_single = product_id[i].value;
-            let selected_product = product_name.innerHTML.toString();
-            let token = $("input[name=csrfmiddlewaretoken]").val();
 
-            alertify.prompt('Update quantity', selected_product.toString(), 'Enter Quantity'
-               , function(evt, value) {
-                    alertify.success('You entered: ' + value)
-                    console.log(value)
-                }
-               , function() { alertify.error('Cancel') });
-
-            console.log(product_id_single)
-                console.log()
-
-            // $.ajax({
-            //     method: "POST",
-            //     url: "/delete",
-            //     data: {
-            //         product_id: product_id_single,
-            //         csrfmiddlewaretoken: token,
-            //     },
-            //     success: function (response) {
-            //         alertify.notify("Deleting")
-            //         $(".table-responsive").load(location.href + " .table-responsive");
-            //     },
-            // });
-        })
-        })
 
     } );
 </script>
