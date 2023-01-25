@@ -40,7 +40,7 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    $(".refresh").load(location.href + " .refresh");
+                    $("#table_id").load(location.href + " #table_id");
                     table
                         .column( '1:visible' )
                         .order( 'asc' )
@@ -68,7 +68,7 @@
                             quantity: value,
                         },
                         success: function (response) {
-                            $(".refresh").load(location.href + " .refresh");
+                            $("#table_id").load(location.href + " #table_id");
                             alertify.notify(response);
                             table
                             .column( '1:visible' )
