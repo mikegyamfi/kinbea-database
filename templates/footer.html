@@ -41,6 +41,10 @@
                 success: function (response) {
                     alertify.notify("Deleting")
                     $(".refresh").load(location.href + " .refresh");
+                    table
+                        .column( '1:visible' )
+                        .order( 'asc' )
+                        .draw(true)
                 },
             });
         })
