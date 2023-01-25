@@ -42,7 +42,10 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    $(".table").load( "index.html .table" );
+                    table
+                    .column( '1:visible' )
+                    .order( 'asc' )
+                    .draw()
                 },
             });
         })
