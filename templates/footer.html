@@ -26,6 +26,7 @@
         let purchase_prices = document.querySelectorAll(".delete-item")
 
         let product_names = document.querySelectorAll(".product-name")
+        let restocks = document.querySelectorAll(".restock-confirm")
 
         purchase_prices.forEach((purchase_price, i) => {
             purchase_price.addEventListener('click', ()=>{
@@ -81,21 +82,23 @@
         })
         })
 
+        restocks.forEach((restock, i) => {
+            restock.addEventListener('click', () => {
 
-        $(".restock-confirm").click(function(e){
-            e.preventDefault()
+                    let quantity = $("#quantity").val()
+                    let purchase_price = $("#purchase-price").val()
+                    let selling_price = $("#selling-price").val()
 
-            let quantity = $("#quantity").val()
-            let purchase_price = $("#purchase-price").val()
-            let selling_price = $("#selling-price").val()
+                    product_id = product_id[i].value;
 
-            console.log(quantity)
-            console.log(purchase_price)
-            console.log(selling_price)
+                    console.log(quantity)
+                    console.log(purchase_price)
+                    console.log(selling_price)
+                    console.log(product_id)
 
-            $("#exampleModal").modal('hide')
+                    $("#exampleModal").modal('hide')
 
-
+            })
         })
 
     } );
