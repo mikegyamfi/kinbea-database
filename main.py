@@ -172,6 +172,7 @@ def update():
         product.amount_sold = product.quantity_sold * product.selling_price
         db.session.commit()
         return jsonify("Item updated")
+    return redirect('home')
 
 
 @app.route("/sold")
@@ -278,6 +279,7 @@ def delete():
         db.session.delete(product)
         db.session.commit()
         return jsonify("Item deleted")
+    return redirect('home')
 
 
 @app.route("/delete-r/<product_id>")
