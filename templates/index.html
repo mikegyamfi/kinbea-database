@@ -56,7 +56,7 @@
         {% if product.quantity_left < 1 %}
         <td class="product-name">{{product.name}}</td>
         {% else %}
-      <td> <a class="product-name" style="text-decoration:none;" href="{{url_for('update', product_id=product.id)}}" >{{product.name}}</a> </td>
+      <td> <a class="product-name" style="text-decoration:none;" >{{product.name}}</a> </td>
         {% endif %}
         <input type="hidden" id="product-id" value="{{product.id}}">
         <td>₵{{product.purchase_price}}</td>

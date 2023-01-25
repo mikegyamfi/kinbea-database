@@ -24,6 +24,8 @@
         let product_id = document.querySelectorAll("#product-id");
         let purchase_prices = document.querySelectorAll(".delete-item")
 
+        let product_names = document.querySelectorAll(".product-name")
+
         purchase_prices.forEach((purchase_price, i) => {
             purchase_price.addEventListener('click', ()=>{
             let product_id_single = product_id[i].value;
@@ -43,6 +45,37 @@
                     $(".table-responsive").load(location.href + " .table-responsive");
                 },
             });
+        })
+        })
+
+        product_names.forEach((product_name, i) => {
+            product_name.addEventListener('click', ()=>{
+            let product_id_single = product_id[i].value;
+            let selected_product = product_name[i].innerHTML;
+            let token = $("input[name=csrfmiddlewaretoken]").val();
+
+            alertify.prompt( selected_product, 'Update quantity'
+               , function(evt, value) {
+                    alertify.success('You entered: ' + value)
+                    console.log(value)
+                }
+               , function() { alertify.error('Cancel') });
+
+            console.log(product_id_single)
+                console.log()
+
+            // $.ajax({
+            //     method: "POST",
+            //     url: "/delete",
+            //     data: {
+            //         product_id: product_id_single,
+            //         csrfmiddlewaretoken: token,
+            //     },
+            //     success: function (response) {
+            //         alertify.notify("Deleting")
+            //         $(".table-responsive").load(location.href + " .table-responsive");
+            //     },
+            // });
         })
         })
 
