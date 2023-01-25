@@ -51,7 +51,7 @@
         product_names.forEach((product_name, i) => {
             product_name.addEventListener('click', ()=>{
             let product_id_single = product_id[i].value;
-            let selected_product = product_name[i].text();
+            let selected_product = product_name.innerHTML.toString();
             let token = $("input[name=csrfmiddlewaretoken]").val();
 
             alertify.prompt(selected_product.toString(), 'Update quantity'
