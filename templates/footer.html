@@ -40,12 +40,17 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    let table = $('#table_id').DataTable();
+                    table.destroy();
+
+                    table = $('#table_id').DataTable({
+        "lengthMenu": [ 50, 100, 200, 500, 1000 ]
+    });
 
     table
     .column( '1:visible' )
     .order( 'asc' )
     .draw()
+
                 },
             });
         })
@@ -69,12 +74,7 @@
                             quantity: value,
                         },
                         success: function (response) {
-                            let table = $('#table_id').DataTable();
 
-    table
-    .column( '1:visible' )
-    .order( 'asc' )
-    .draw()
                         },
                     });
                 }
