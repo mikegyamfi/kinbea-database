@@ -40,9 +40,9 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
+                    $(".table").load(location.href);
                 },
             });
-            table.ajax.reload();
         })
         })
 
