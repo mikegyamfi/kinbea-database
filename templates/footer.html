@@ -42,10 +42,7 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    table
-                    .column( '1:visible' )
-                    .order( 'asc' )
-                    .draw()
+                    table.ajax.reload();
                 },
             });
         })
