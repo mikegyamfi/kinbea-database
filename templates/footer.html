@@ -42,7 +42,7 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    $(".refresh").load(".refresh");
+                    $(".refresh").load( "index.html .refresh" );
                 },
             });
         })
