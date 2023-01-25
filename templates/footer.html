@@ -54,7 +54,7 @@
             let selected_product = product_name.innerHTML.toString();
             let token = $("input[name=csrfmiddlewaretoken]").val();
 
-            alertify.prompt(selected_product.toString(), 'Update quantity'
+            alertify.prompt('Update quantity', selected_product.toString(), 'Enter Quantity'
                , function(evt, value) {
                     alertify.success('You entered: ' + value)
                     console.log(value)
