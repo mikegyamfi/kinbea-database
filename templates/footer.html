@@ -56,7 +56,6 @@
 
             alertify.prompt('Update quantity', selected_product.toString(), 'Enter Quantity'
                , function(evt, value) {
-                    alertify.success('You entered: ' + value)
 
                     $.ajax({
                         method: "POST",
