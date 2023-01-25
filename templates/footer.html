@@ -40,16 +40,7 @@
                 },
                 success: function (response) {
                     alertify.notify("Deleting")
-                    $(".table-body").load(location.href + " .table-body");
-                    table.destroy();
-
-                    table = $('#table_id').DataTable();
-
-    table
-    .column( '1:visible' )
-    .order( 'asc' )
-    .draw()
-
+                    location.reload();
                 },
             });
         })
@@ -73,7 +64,8 @@
                             quantity: value,
                         },
                         success: function (response) {
-
+                            alertify.notify(response);
+                            location.reload();
                         },
                     });
                 }
