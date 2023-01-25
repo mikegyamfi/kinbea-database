@@ -71,7 +71,7 @@
         <td style="color:red">Out of Stock</td>
         {% endif %}
         <td>₵{{product.amount_sold}}</td>
-        <td> <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@{{product.name}}">Restock</button> </td>
+        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button> </td>
            {% if current_user.is_authenticated %}
         {% if current_user.role == 'Admin' %}
         <td class="delete-item" style="color:green; text-decoration:none;">🗑️</td>
