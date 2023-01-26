@@ -147,7 +147,7 @@ def add_product():
     return render_template("add_product.html", form=form)
 
 
-@app.route("/update", methods=['POST'])
+@app.route("/update", methods=['GET', 'POST'])
 @login_required
 def update():
     if request.method == "POST":
@@ -172,7 +172,6 @@ def update():
         product.amount_sold = product.quantity_sold * product.selling_price
         db.session.commit()
         return jsonify("Item updated")
-    return redirect('home')
 
 
 @app.route("/sold")

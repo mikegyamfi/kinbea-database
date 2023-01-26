@@ -82,25 +82,6 @@
         })
         })
 
-        restocks.forEach((restock, i) => {
-            restock.addEventListener('click', () => {
-
-                    let quantity = $("#quantity").val()
-                    let purchase_price = $("#purchase-price").val()
-                    let selling_price = $("#selling-price").val()
-
-                    product_id = product_id[i].value;
-
-                    console.log(quantity)
-                    console.log(purchase_price)
-                    console.log(selling_price)
-                    console.log(product_id)
-
-                    $("#exampleModal").modal('hide')
-
-            })
-        })
-
     } );
 </script>
 </body>
