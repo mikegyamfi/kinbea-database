@@ -46,8 +46,12 @@
         <th scope="col">Quantity Available</th>
         <th scope="col">Amount Sold</th>
         <th scope="col">Restock</th>
+                {% if current_user.is_authenticated %}
+        {% if current_user.role == 'Admin' %}
         <th scope="col">Delete</th>
         <th scope="col">Edit Price</th>
+      {% endif %}
+      {% endif %}
     </tr>
   </thead>
   <tbody class="table-body">
@@ -55,7 +59,7 @@
     <tr>
       <td>{{product.date}}</td>
         {% if product.quantity_left < 1 %}
-        <td class="product-name">{{product.name}}</td>
+        <td>{{product.name}}</td>
         {% else %}
       <td class="product-name" style="text-decoration:none; color: aqua" >{{product.name}}</td>
         {% endif %}
