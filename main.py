@@ -118,7 +118,7 @@ def home():
     today = date.today().strftime("%B %d, %Y")
     total_cost = 0
     for product in all_products:
-        total_cost += product.selling_price * product.total_quantity
+        total_cost += product.selling_price * product.quantity_left
     formatted_total = numbers = "{:,}".format(round(total_cost, 2))
     return render_template("index.html", products=all_products, total=formatted_total, date=today, form=form, group_form=group_form)
 
