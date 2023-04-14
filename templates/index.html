@@ -66,15 +66,31 @@
         <input type="hidden" id="product-id" value="{{product.id}}">
         <td>₵{{product.purchase_price}}</td>
       <td class="purchase-price">₵{{product.selling_price}}</td>
+        {% if product.quantity_left > 0 %}
         <td>{{product.total_quantity}}</td>
-        <td>₵{{product.total_amount}}</td>
+        {% else %}
+        <td>0</td>
+        {% endif %}
+        {% if product.quantity_left > 0 %}
+        <td>{{product.total_amount}}</td>
+        {% else %}
+        <td>0</td>
+        {% endif %}
+        {% if product.quantity_left > 0 %}
         <td>{{product.quantity_sold}}</td>
+        {% else %}
+        <td>0</td>
+        {% endif %}
         {% if product.quantity_left > 0 %}
         <td>{{product.quantity_left}}</td>
         {% else %}
         <td style="color:red">Out of Stock</td>
         {% endif %}
-        <td>₵{{product.amount_sold}}</td>
+        {% if product.quantity_left > 0 %}
+        <td>{{product.amount_sold}}</td>
+        {% else %}
+        <td>0</td>
+        {% endif %}
         <td> <a class="btn btn-sm btn-outline-success" href="{{url_for('restock', product_id=product.id)}}" >Restock</a> </td>
            {% if current_user.is_authenticated %}
         {% if current_user.role == 'Admin' %}
