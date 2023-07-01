@@ -107,7 +107,11 @@
 {% else %}
     <h2>No stock added yet</h2>
 {% endif %}
+               {% if current_user.is_authenticated %}
+        {% if current_user.role == 'Admin' %}
 <h4>Total Cost: GH₵{{total}}</h4>
+    {% endif %}
+    {% endif %}
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
